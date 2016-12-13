@@ -17,6 +17,58 @@
 
 </head>
 <body>
+<div class="container">
+	<div class="row">
+		<!-- The table element -->
+		<div class="the-table col-sm-8 col-sm-offset-2">
+			<div class="row">
+			<!-- The dealer element -->
+				<div class="col-sm-12 dealer-hand-wrapper">
+					<!-- Dealer total -->
+					<div class="col-sm-3 dealer-total">
+						Dealer Total <span class="dealer-total-number">0</span>
+					</div>
+					<div class="col-sm-9 dealer-cards">
+						<div class="col-sm-2 card card-one"></div>
+						<div class="col-sm-2 card card-two"></div>
+						<div class="col-sm-2 card card-three"></div>
+						<div class="col-sm-2 card card-four"></div>
+						<div class="col-sm-2 card card-five"></div>
+						<div class="col-sm-2 card card-six"></div>
+					</div>
+				</div>
+			</div>
+
+			<!-- The player element -->
+			<div class="row">
+				<div class="col-sm-12 player-hand-wrapper">
+					<!-- Player total -->
+					<div class="col-sm-3 player-total">
+						Player Total <span class="player-total-number">0</span>
+					</div>
+					<div class="col-sm-9 player-cards">
+						<div class="col-sm-2 card card-one"></div>
+						<div class="col-sm-2 card card-two"></div>
+						<div class="col-sm-2 card card-three"></div>
+						<div class="col-sm-2 card card-four"></div>
+						<div class="col-sm-2 card card-five"></div>
+						<div class="col-sm-2 card card-six"></div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
 
 </body>
 </html>
+
+<!-- Layout:
+1. Create an element for our table. Turn it green, and give it a white border.
+2. Create an element for the dealer's hand and for the player's hand.
+3. Create an element for the dealer's total and the player's total.
+4. Create an element for each card in each hand, a maximum of 6 cards. 
+5. Assign a generic class to each card and a unique class to each card so we style and target 
+6. Make a Deal, hit, and stand button -->
