@@ -8,7 +8,20 @@
 
 .card {
 	height: 120px;
+	width: 90px;
 	background-color: #fff;
 	color: black;
 	margin:  10px;
+}
+
+.row {
+	padding:  30px;
+}
+
+button {
+	width: 100%;
+}
+
+img {
+	max-width: 100%;
 }
