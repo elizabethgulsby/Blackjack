@@ -4,11 +4,12 @@
 	border-radius: 10px;
 	margin-top: 50px;
 	padding:  30px 0px;
+	border-radius: 10px 10px 50% 50%;
 }
 
 .card {
 	height: 120px;
-	background-color: #fff;
+	background-color: #277714;
 	color: black;
 	margin:  10px;
 	width: 12.6%;
@@ -25,4 +26,13 @@ button {
 
 img {
 	height:  120px;
+}
+
+.reset-button {
+	width:  60%;
+	float:  left;
+}
+
+.col-sm-offset-3 {
+	margin-left: 28%;
 }
