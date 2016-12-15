@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="CSS/card-flip.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() { 
+		$('#threeDChild').click(function() {
+			$(this).toggleClass('flip');
+		});
+
+		$('.face-holder').click(function() {
+			$(this).toggleClass('flip');
+		});
+
+
+	});
+	</script>
+
+
+</head>
+<body>
+
+
+
+<!-- Outer container to make a 3D space/cube for its children -->
+	<div class="card">
+	<!-- Inner container that will hold both divs, which will be back to back -->
+	<!-- This will be able to play in 3D - main job is to flip around, contents are frozen -->
+		<div class="face-holder">
+		<!-- Front of the card -->
+			<div class="card-front">
+				<img src="Images/10c.png">
+			</div>
+			<!-- back of the card -->
+			<div class="card-back">
+				<img src="Images/deck.png">
+			</div>
+		</div>
+
+		<div class="face-holder">
+		<!-- Front of the card -->
+			<div class="card-front">
+				<img src="Images/11c.png">
+			</div>
+			<!-- back of the card -->
+			<div class="card-back">
+				<img src="Images/deck.png">
+			</div>
+		</div>
+	</div>
+
+
+	<!-- <div id="parent">
+		<div id="threeDChild">Hello</div>
+	</div> -->
+
+</body>
+</html>

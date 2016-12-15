@@ -1,15 +1,17 @@
 .the-table {
-	background-color: #277714;
+	background-color: #36663b;
 	border:  5px solid #663366;
 	border-radius: 10px;
-	margin-top: 50px;
+	/* margin-top: 50px; */
 	padding:  30px 0px;
-	border-radius: 10px 10px 50% 50%;
+	border-radius: 10px 10px 45% 45%;
+	transform: perspective(100em) rotateX(30deg); /* this lays the table flat at an angle*/
+
 }
 
 .card {
 	height: 120px;
-	background-color: #277714;
+	background-color: #36663b;
 	color: black;
 	margin:  10px;
 	width: 12.6%;
@@ -35,4 +37,32 @@ img {
 
 .col-sm-offset-3 {
 	margin-left: 28%;
+}
+
+body {
+	background-image: url('../CSS/Damask_Background.jpg');
+}
+
+/* new */
+.card-container{
+	width: 85.44px;
+	height: 120px;
+	position: relative;
+	transition: all 2s;
+	transform-style: preserve-3d;
+}
+
+.card-front, .card-back {
+	position: absolute;
+	top: 0;
+	left: 0;
+	backface-visibility: hidden;
+}
+
+.card-front{
+	transform: rotateY(180deg);
+}
+
+.flip{
+	transform: rotateY(-180deg);
 }

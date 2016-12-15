@@ -34,6 +34,13 @@ var topOfDeck = 4;
 		calculateTotal(playersHand, 'player');
 		calculateTotal(dealersHand, 'dealer');
 
+		// new
+		setTimeout(function(){
+		$('.player-cards .card-1 .card-container').toggleClass('flip');
+		$('.player-cards .card-2 .card-container').toggleClass('flip');
+		$('.dealer-cards .card-1 .card-container').toggleClass('flip');
+	}, 500);
+
 	});
 
 
@@ -47,6 +54,7 @@ var topOfDeck = 4;
 			calculateTotal(playersHand, 'player');
 		} //if calculateTotal() > 21, this if statement doesn't run
 		checkWin();
+
 	});
 
 
@@ -63,7 +71,6 @@ var topOfDeck = 4;
 		}
 		// The dealer has 17 or more.  Player hit stand.  Check to see who won.
 		checkWin();
-
 	});
 
 	$('.reset-button').click(function() {
@@ -78,8 +85,8 @@ function checkWin() {
 	// Player has more than 21, player busts and loses.
 	if (playerTotal > 21) {
 		$('.player-total-number').text('You bust!');
-		$('.player-total-label').addClass('hidden');
 		$('.dealer-total-number').text('Dealer wins!');
+		$('.player-total-label').addClass('hidden');
 		$('.dealer-total-label').addClass('hidden');
 		$('.reset-button').removeClass('hidden');
 		$('.hit-button').prop('disabled', true);
@@ -89,8 +96,8 @@ function checkWin() {
 	else if (dealerTotal > 21) {
 		// Dealer busted.  Player is good, player wins.  Put message in DOM.
 		$('.dealer-total-number').text('Dealer busts!');
-		$('.dealer-total-label').addClass('hidden');
 		$('.player-total-number').text('Player wins!');
+		$('.dealer-total-label').addClass('hidden');
 		$('.player-total-label').addClass('hidden');
 		$('.reset-button').removeClass('hidden');
 		$('.hit-button').prop('disabled', true);
@@ -151,9 +158,7 @@ function checkWin() {
 				$('.stand-button').prop('disabled', true);
 			}
 		}
-		
 	}
-
 }
 
 function reset() {
@@ -212,6 +217,9 @@ function placeCard(who, where, whatCard) {
 	var classSelector = '.' + who + '-cards .card-' + where; //ex: '.player-cards .card-one'
 	//targeting the class we built and inserting into the html the element specified (in this case, an image)
 	$(classSelector).html('<img src="Grunge_Land/' + whatCard + '.png">');
+
+	// new
+    $(classSelector).html('<div class="card-container"><div class="card-front"><img src="Grunge_Land/' + whatCard + '.png"></div><div class="card-back"><img src="Grunge_Land/deck.png"></div></div>');
 }
 
 function calculateTotal(hand, who) {  //sending playersArray or dealersArray + player/dealer

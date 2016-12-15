@@ -1,0 +1,66 @@
+#parent {
+	height:  200px;
+	width:  200px;
+	border: 5px solid black;
+	perspective: 200px; /*adding pixels to this means we're farther away from it - gradient is less severe - 500px would show a greater rotation gradient - reducing pixels adds more rotation*/
+	transition:  all 3s;
+}
+
+#threeDChild {
+	border:  5px solid blue;
+	transition: all 2s;
+	background-color: red;
+	height: 200px;
+	width: 200px;
+}
+
+#parent.flip { /*go find things with an ID of parent and add this class (have to be more specific here)*/
+	perspective: 100px;
+}
+
+#threeDChild.flip {
+	transform:  rotateY(180deg); 
+}
+
+/* The parent, which is a 3D space */
+.card {
+	height:  300px;
+	width: 300px;
+	border:  2px solid black;
+	perspective: 300px;
+}
+
+/* The child that can play 3D, and is holding the two card faces */
+.face-holder {
+	height:  300px;
+	width: 176px;
+	position: relative; /*the children of face-holder will be absolute so we can stack them atop each other*/
+	transition:  all 1s;
+	transform-style: preserve-3d;
+}
+
+/* The actual face of the card and face of the back, they need a 3D space */
+/* these rules apply to both */
+.card-front, .card-back {
+	width: 176px;
+	/* abs position so they are on top of each other */
+	position: absolute;
+	/* init position */
+	top: 0;
+	left: 0;
+	border: 2px red solid;
+	backface-visibility: hidden; /*do not show the back of the div*/
+}
+
+/* Rules just for front and rules just for back */
+.card-front {
+	transform: rotateY(180deg);
+}
+
+.card-back {
+
+}
+
+.flip {
+	transform:  rotateY(-180deg);
+}
