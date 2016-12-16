@@ -56,6 +56,7 @@ var topOfDeck = 4;
 		setTimeout(function(){
 		$('.player-cards .card-' + slotForNewCard + ' .card-container').toggleClass('flip');
 		}, 50);
+		$('.dealer-cards .card-2 .card-container').toggleClass('flip');
 
 		checkWin();
 
@@ -67,7 +68,7 @@ var topOfDeck = 4;
 		setTimeout(function(){		
 			$('.dealer-cards .card-2 .card-container').toggleClass('flip');
 		},50);
-		
+
 		// what happens to player?  Nothing.  Control goes to dealer. If dealer has < 16, draw a card
 		dealerTotal = calculateTotal(dealersHand, 'dealer');
 		while (dealerTotal < 17) {
