@@ -34,12 +34,11 @@ var topOfDeck = 4;
 		calculateTotal(playersHand, 'player');
 		calculateTotal(dealersHand, 'dealer');
 
-		// new
 		setTimeout(function(){
 		$('.player-cards .card-1 .card-container').toggleClass('flip');
 		$('.player-cards .card-2 .card-container').toggleClass('flip');
 		$('.dealer-cards .card-1 .card-container').toggleClass('flip');
-	}, 500);
+		}, 500);
 
 	});
 
@@ -53,12 +52,22 @@ var topOfDeck = 4;
 			placeCard('player', slotForNewCard, playersHand[lastCardIndex]);
 			calculateTotal(playersHand, 'player');
 		} //if calculateTotal() > 21, this if statement doesn't run
+
+		setTimeout(function(){
+		$('.player-cards .card-' + slotForNewCard + ' .card-container').toggleClass('flip');
+		}, 50);
+
 		checkWin();
 
 	});
 
 
 	$('.stand-button').click(function() {
+		//dealer's second card is revealed as soon as stand is clicked
+		setTimeout(function(){		
+			$('.dealer-cards .card-2 .card-container').toggleClass('flip');
+		},50);
+		
 		// what happens to player?  Nothing.  Control goes to dealer. If dealer has < 16, draw a card
 		dealerTotal = calculateTotal(dealersHand, 'dealer');
 		while (dealerTotal < 17) {
@@ -67,10 +76,16 @@ var topOfDeck = 4;
 			var lastCardIndex = dealersHand.length - 1;
 			var slotForNewCard = dealersHand.length;
 			placeCard('dealer', slotForNewCard, dealersHand[lastCardIndex]);
+
 			dealerTotal = calculateTotal(dealersHand, 'dealer');
 		}
 		// The dealer has 17 or more.  Player hit stand.  Check to see who won.
 		checkWin();
+		setTimeout(function(){
+			for (var i = 3; i <= dealersHand.length ; i++) {
+				$('.dealer-cards .card-' + i + ' .card-container').toggleClass('flip');
+			}
+		},50);
 	});
 
 	$('.reset-button').click(function() {
