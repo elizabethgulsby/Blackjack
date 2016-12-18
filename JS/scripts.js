@@ -39,6 +39,7 @@ var topOfDeck = 4;
 		$('.player-cards .card-2 .card-container').toggleClass('flip');
 		$('.dealer-cards .card-1 .card-container').toggleClass('flip');
 		}, 500);
+		checkPlayerWin();
 
 	});
 
@@ -53,12 +54,13 @@ var topOfDeck = 4;
 			calculateTotal(playersHand, 'player');
 		} //if calculateTotal() > 21, this if statement doesn't run
 
+		//delays the reveal in the player's cards
 		setTimeout(function(){
 		$('.player-cards .card-' + slotForNewCard + ' .card-container').toggleClass('flip');
 		}, 50);
-		$('.dealer-cards .card-2 .card-container').toggleClass('flip');
+		//$('.dealer-cards .card-2 .card-container').toggleClass('flip');
 
-		checkWin();
+		checkPlayerWin();
 
 	});
 
@@ -81,12 +83,14 @@ var topOfDeck = 4;
 			dealerTotal = calculateTotal(dealersHand, 'dealer');
 		}
 		// The dealer has 17 or more.  Player hit stand.  Check to see who won.
-		checkWin();
+		checkDealerWin();
+		//delays the dealer in revealing his cards at the end of the game
 		setTimeout(function(){
 			for (var i = 3; i <= dealersHand.length ; i++) {
 				$('.dealer-cards .card-' + i + ' .card-container').toggleClass('flip');
 			}
 		},50);
+
 	});
 
 	$('.reset-button').click(function() {
@@ -94,90 +98,9 @@ var topOfDeck = 4;
 	})
 
 
-//break this into two separate functions - checkDealerWin() and checkPlayerWin();
-function checkWin() {
-	dealerTotal = calculateTotal(dealersHand, 'dealer');
-	playerTotal = calculateTotal(playersHand, 'player');
+////////////////////////FUNCTIONS///////////////////////////////
 
-	// Player has more than 21, player busts and loses.
-	if (playerTotal > 21) {
-		$('.player-total-number').text('You bust!');
-		$('.dealer-total-number').text('Dealer wins!');
-		$('.player-total-label').addClass('hidden');
-		$('.dealer-total-label').addClass('hidden');
-		$('.reset-button').removeClass('hidden');
-		$('.hit-button').prop('disabled', true);
-		$('.stand-button').prop('disabled', true);
-
-	}
-	else if (dealerTotal > 21) {
-		// Dealer busted.  Player is good, player wins.  Put message in DOM.
-		$('.dealer-total-number').text('Dealer busts!');
-		$('.player-total-number').text('Player wins!');
-		$('.dealer-total-label').addClass('hidden');
-		$('.player-total-label').addClass('hidden');
-		$('.reset-button').removeClass('hidden');
-		$('.hit-button').prop('disabled', true);
-		$('.stand-button').prop('disabled', true);
-	}
-	else if (playerTotal == 21) {
-		$('.player-total-number').text('Blackjack! Player wins!');
-		$('.dealer-total-number').text('Dealer loses!');
-		$('.player-total-label').addClass('hidden');
-		$('.dealer-total-label').addClass('hidden');
-		$('.reset-button').removeClass('hidden');
-		$('.hit-button').prop('disabled', true);
-		$('.stand-button').prop('disabled', true);
-
-	}
-	else if (dealerTotal == 21) {
-		$('.dealer-total-number').text('Blackjack! Dealer wins!');
-		$('.player-total-number').text('Player loses!');
-		$('.player-total-label').addClass('hidden');
-		$('.dealer-total-label').addClass('hidden');
-		$('.reset-button').removeClass('hidden');
-		$('.hit-button').prop('disabled', true);
-		$('.stand-button').prop('disabled', true);
-	}
-	// no one busted.  See who is higher.
-	else {
-		if (dealerTotal < 17) {
-			return;  //dealer must hit
-		}
-		else { //dealer cannot hit, nobody has busted, and nobody has 21
-			if (playerTotal > dealerTotal) {
-				// player won.  Say this somewhere in the DOM.
-				$('.dealer-total-number').text('Dealer loses!');
-				$('.dealer-total-label').addClass('hidden');
-				$('.player-total-number').text('Player wins!');
-				$('.player-total-label').addClass('hidden');
-				$('.reset-button').removeClass('hidden');
-				$('.hit-button').prop('disabled', true);
-				$('.stand-button').prop('disabled', true);
-			}
-			else if (dealerTotal > playerTotal) {
-				// Dealer won.  Say this somewhere in the DOM.
-				$('.dealer-total-number').text('Dealer wins!');
-				$('.dealer-total-label').addClass('hidden');
-				$('.player-total-number').text('Player loses!');
-				$('.player-total-label').addClass('hidden');
-				$('.reset-button').removeClass('hidden');
-				$('.hit-button').prop('disabled', true);
-				$('.stand-button').prop('disabled', true);
-			}
-			else { //it's a tie
-				$('.dealer-total-number').text("It's a tie!");
-				$('.player-total-number').text("It's a tie!");
-				$('.dealer-total-label').addClass('hidden');
-				$('.player-total-label').addClass('hidden');
-				$('.reset-button').removeClass('hidden');
-				$('.hit-button').prop('disabled', true);
-				$('.stand-button').prop('disabled', true);
-			}
-		}
-	}
-}
-
+//resets all values
 function reset() {
 	// the deck needs to be reset
 	theDeck = freshDeck;  //Makes a copy of our constant freshDeck
@@ -210,25 +133,26 @@ function createDeck() {
 	return newDeck;
 }
 
+//shifts cards around 9001 times (arbitrary number)
 function shuffleDeck() {
 	for (let i = 0; i < 9001; i++) {
 		var random1 = Math.floor(Math.random() * theDeck.length);
 		var random2 = Math.floor(Math.random() * theDeck.length);
 
 		// switch theDeck[random1] with theDeck[random2]
-		// store the value of aDeck[random1]
+		// store the value of aDeck[random1] in temp
 		var temp = theDeck[random1];
 
-		// overwrite aDeck[random1] with aDeck[random2]
+		// overwrite theDeck[random1] with theDeck[random2]
 		theDeck[random1] = theDeck[random2];
 
-		// overwrite aDeck[random2] with temp
+		// overwrite theDeck[random2] with temp
 		theDeck[random2] = temp;
 	}
 	console.log(theDeck);
 }
 
-//this function updates the DOM
+//this function updates the DOM to reflect the card image that corresponds with the card selected
 function placeCard(who, where, whatCard) {
 	//building a class here
 	var classSelector = '.' + who + '-cards .card-' + where; //ex: '.player-cards .card-one'
@@ -239,6 +163,8 @@ function placeCard(who, where, whatCard) {
     $(classSelector).html('<div class="card-container"><div class="card-front"><img src="Grunge_Land/' + whatCard + '.png"></div><div class="card-back"><img src="Grunge_Land/deck.png"></div></div>');
 }
 
+
+//calculates total of hand, taking into account varying ace value
 function calculateTotal(hand, who) {  //sending playersArray or dealersArray + player/dealer
 	var total = 0; //init total to 0
 	var cardValue = 0; //temp var for value of current card
@@ -268,10 +194,62 @@ function calculateTotal(hand, who) {  //sending playersArray or dealersArray + p
 }
 
 
+//checking dealer win conditions
+function checkDealerWin() {
+	//calculates dealer's hand
+	dealerTotal = calculateTotal(dealersHand, 'dealer');
+	//check to see if dealertotal is >21 or =21
+	if (dealerTotal > 21) {
+		$('.dealer-total-number').text('Dealer busts!');
+		$('.player-total-number').text('Player wins!');
+		showOutcome();
+	}
+	if (dealerTotal == 21) {
+		$('.dealer-total-number').text('Blackjack! Dealer wins!');
+	 	$('.player-total-number').text('Player loses!');
+	 	showOutcome();
+	}
+	if (dealerTotal >=17 && dealerTotal <= 20) {  //dealer holds; logic ahead determines who won
+		if (playerTotal > dealerTotal) {
+				// player won.  Say this somewhere in the DOM.
+				$('.dealer-total-number').text('Dealer loses!');
+				$('.player-total-number').text('Player wins!');
+				console.log('p win');
+			}
+
+			else if (dealerTotal >= playerTotal) {  //dealer wins if there's a tie, so don't code a tie outcome
+				// Dealer won.  Say this somewhere in the DOM.
+				$('.dealer-total-number').text('Dealer wins!');
+				$('.player-total-number').text('Player loses!');
+				console.log('d win');
+			}
+			showOutcome();
+		}
+	}
+
+//checking player win conditions
+function checkPlayerWin() {
+	//calculates player's hand
+	playerTotal = calculateTotal(playersHand, 'player');
+		if (playerTotal > 21) {
+			$('.player-total-number').text('You bust!');
+			$('.dealer-total-number').text('Dealer wins!');
+			showOutcome();
+		}
+		if (playerTotal == 21) {
+			$('.player-total-number').text('Blackjack! Player wins!');
+			$('.dealer-total-number').text('Dealer loses!');
+			showOutcome();
+		}
+}
+
+//changes DOM to to reflect outcome of hand
+function showOutcome() {
+	$('.dealer-total-label').addClass('hidden');
+	$('.player-total-label').addClass('hidden');
+	$('.reset-button').removeClass('hidden');
+	$('.hit-button').prop('disabled', true);
+	$('.stand-button').prop('disabled', true);
+}
+
 });
-
-// function winCondition(whoseClass, text) {
-	
-// }
-
-

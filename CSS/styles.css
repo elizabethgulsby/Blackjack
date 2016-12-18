@@ -43,7 +43,11 @@ body {
 	background-image: url('../CSS/Damask_Background.jpg');
 }
 
-/* new */
+.dealer-total, .player-total {
+	color:  white;
+}
+
+/* animation styling */
 .card-container{
 	width: 85.44px;
 	height: 120px;
