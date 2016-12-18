@@ -94,6 +94,7 @@ var topOfDeck = 4;
 	})
 
 
+//break this into two separate functions - checkDealerWin() and checkPlayerWin();
 function checkWin() {
 	dealerTotal = calculateTotal(dealersHand, 'dealer');
 	playerTotal = calculateTotal(playersHand, 'player');
