@@ -17,6 +17,19 @@
 
 </head>
 <body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Blackjack</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="buttons"></li>
+      <li><a href="#">Function 1</a></li>
+      <li><a href="#">Function 2</a></li>
+      <li><a href="#">Function 3</a></li>
+    </ul>
+  </div>
+</nav>
 <div class="container">
 	<div class="row">
 		<!-- The table element -->
@@ -36,6 +49,10 @@
 						<div class="card card-5"></div>
 						<div class="card card-6"></div>
 					</div>
+					<!--Deck stack -->
+					<div id="deck" class="bottom"><img src="Grunge_Land/deck.png"></div>
+					<div id="deck" class="middle"><img src="Grunge_Land/deck.png"></div>
+					<div id="deck" class="top"><img src="Grunge_Land/deck.png"></div>
 				</div>
 			</div>
 
@@ -57,7 +74,7 @@
 				</div>
 			</div>
 
-			<div class="row">
+			<div class="row gameplay-buttons">
 				<div class="col-sm-2 col-sm-offset-2">
 					<button class="btn btn-primary deal-button">Deal</button>
 				</div>
@@ -70,13 +87,17 @@
 					<button class="btn btn-warning stand-button">Stand</button>
 				</div>
 
-			</div>
-
-			<div class="row">
-				<div class="col-sm-offset-3">
+				<div class="col-sm-offset-2">
 					<button class="btn btn-info reset-button hidden">Play Again?</button>
 				</div>
+
 			</div>
+
+			<!-- <div class="row" id="reset">
+				<div class="col-sm-offset-2">
+					<button class="btn btn-info reset-button hidden">Play Again?</button>
+				</div>
+			</div> -->
 
 		</div>
 	</div>

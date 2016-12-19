@@ -93,6 +93,7 @@ var topOfDeck = 4;
 
 	});
 
+
 	$('.reset-button').click(function() {
 		reset();
 	})
@@ -248,6 +249,7 @@ function showOutcome() {
 	$('.dealer-total-label').addClass('hidden');
 	$('.player-total-label').addClass('hidden');
 	$('.reset-button').removeClass('hidden');
+	// $('.reset').attr('z-index', 1);
 	$('.hit-button').prop('disabled', true);
 	$('.stand-button').prop('disabled', true);
 }

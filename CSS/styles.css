@@ -30,13 +30,33 @@ img {
 	height:  120px;
 }
 
-.reset-button {
-	width:  60%;
-	float:  left;
+.gameplay-buttons {
+	
+}
+
+.btn-info {
+	color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+    width: 80%;
+    top: -34px;
+    position: relative;
+}
+
+#reset {
+	width: 79%;
+    float: left;
+    top: -94px;
+    position: relative;
+    z-index: -1;
 }
 
 .col-sm-offset-3 {
 	margin-left: 28%;
+}
+
+.col-sm-10 {
+	width:  70%;
 }
 
 body {
@@ -69,4 +89,22 @@ body {
 
 .flip{
 	transform: rotateY(-180deg);
+}
+
+.navbar-nav {
+	float:  right;
+}
+
+.middle {
+	z-index: 1; 
+	top: -125px; 
+	left: 3px; 
+	position: relative;
+}
+
+.top {
+	z-index: 2;
+    top: -11.8px;
+    left: 922px;
+    position: absolute;
 }
