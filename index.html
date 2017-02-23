@@ -1,110 +1,131 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title></title>
-	<!-- Link to local bootstrap -->
-	<link rel="stylesheet" type="text/css" href="CSS/bootstrap.min.css">
-	<!-- Link to custom CSS -->
-	<link rel="stylesheet" type="text/css" href="CSS/styles.css">
+	<head>
+		<title>Blackjack "21!"</title>
+		<!-- Link to local bootstrap -->
+		<link rel="stylesheet" type="text/css" href="CSS/bootstrap.min.css">
+		<!-- Link to custom CSS -->
+		<link rel="stylesheet" type="text/css" href="CSS/styles.css">
 
-	<!-- Link to local jQuery -->
-	<script type="text/javascript" src="JS/jquery.min.js"></script>
-	<!-- link to custom JS -->
-	<script type="text/javascript" src="JS/scripts.js"></script>
-
-
+		<!-- Link to local jQuery -->
+		<script type="text/javascript" src="JS/jquery.min.js"></script>
+		<!-- link to custom JS -->
+		<script type="text/javascript" src="JS/scripts.js"></script>
 
 
-</head>
-<body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Blackjack</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="buttons"></li>
-      <li><a href="#">Function 1</a></li>
-      <li><a href="#">Function 2</a></li>
-      <li><a href="#">Function 3</a></li>
-    </ul>
-  </div>
-</nav>
-<div class="container">
-	<div class="row">
-		<!-- The table element -->
-		<div class="the-table col-sm-12">
+
+
+	</head>
+	<body>
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">Blackjack</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li class="buttons"></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+				</ul>
+			</div>
+		</nav>
+		<div class="container">
 			<div class="row">
-			<!-- The dealer element -->
-				<div class="col-sm-12 dealer-hand-wrapper">
-					<!-- Dealer total -->
-					<div class="col-sm-2 dealer-total">
-						<span class="dealer-total-label">Dealer Total: </span><span class="dealer-total-number">0</span>
+				<!-- The table element -->
+				<div class="the-table col-sm-12">
+					<div class="row">
+					<!-- The dealer element -->
+						<div class="col-sm-12 dealer-hand-wrapper">
+							<!-- Dealer total -->
+							<div class="col-sm-2 dealer-total">
+								<!-- <div class="row" > -->
+									<span class="dealer-total-label">Dealer Total</span>
+									<span class="dealer-total-number">0</span>
+									<span class="dealer-cash-label">House</span>
+									<span class="dealer-cash"></span>
+									<span class="dealer-status-label"></span>
+								<!-- </div> -->
+							</div>
+
+							<div class="col-sm-8 dealer-cards">
+								<div class="card card-1"></div>
+								<div class="card card-2"></div>
+								<div class="card card-3"></div>
+								<div class="card card-4"></div>
+								<div class="card card-5"></div>
+								<div class="card card-6"></div>
+							</div>
+							<!--Deck stack -->
+							<div id="deck" class="col-sm-2 bottom">
+								<span class="deck-image"><img deck-image" src="Images/deck.png" /></span>
+								<span class="deck-size" >Deck Size: 52</span>
+								<span class="flip-span"><button class="btn btn-info flip-table">Flip the table?</button></span>
+							</div>
+
+
+						</div>
 					</div>
-					<div class="col-sm-10 dealer-cards">
-						<div class="card card-1"></div>
-						<div class="card card-2"></div>
-						<div class="card card-3"></div>
-						<div class="card card-4"></div>
-						<div class="card card-5"></div>
-						<div class="card card-6"></div>
+
+					<!-- The player element -->
+					<div class="row">
+						<div class="col-sm-12 player-hand-wrapper">
+							<!-- Player total -->
+							<div class="col-sm-2 player-total">
+								<div class="row">
+									<span class="player-total-label">Player Total: </span>
+									<span class="player-total-number">0</span>
+									<span class="player-cash"></span>
+									<span class="player-status-label"/>
+								</div>
+							</div>
+
+							<div class="col-sm-10 player-cards">
+								<div class="card card-1"></div>
+								<div class="card card-2"></div>
+								<div class="card card-3"></div>
+								<div class="card card-4"></div>
+								<div class="card card-5"></div>
+								<div class="card card-6"></div>
+							</div>
+						</div>
 					</div>
-					<!--Deck stack -->
-					<div id="deck" class="bottom"><img src="Grunge_Land/deck.png"></div>
-					<div id="deck" class="middle"><img src="Grunge_Land/deck.png"></div>
-					<div id="deck" class="top"><img src="Grunge_Land/deck.png"></div>
+
+					<div class="row play-again" style="position: absolute; max-width: 700px; min-width: 400px; left: 35%; top: 40%;">
+						<button class="btn btn-info reset-button hidden">Play Again?</button>
+					</div>
+
+					<div class="row gameplay-buttons">
+						<div class="col-sm-2 col-sm-offset-2">
+							<button class="btn btn-primary deal-button">Deal</button>
+						</div>
+
+						<div class="col-sm-2 col-sm-offset-1">
+							<button class="btn btn-success hit-button">Hit</button>
+						</div>
+
+						<div class="col-sm-2 col-sm-offset-1">
+							<button class="btn btn-warning stand-button">Stand</button>
+						</div>
+
+<!-- 						<div class="col-sm-offset-2">
+							<button class="btn btn-info reset-button hidden">Play Again?</button>
+						</div> -->
+
+					</div>
+
+					<!-- <div class="row" id="reset">
+						<div class="col-sm-offset-2">
+							<button class="btn btn-info reset-button hidden">Play Again?</button>
+						</div>
+					</div> -->
+
 				</div>
 			</div>
-
-			<!-- The player element -->
-			<div class="row">
-				<div class="col-sm-12 player-hand-wrapper">
-					<!-- Player total -->
-					<div class="col-sm-2 player-total">
-						<span class="player-total-label">Player Total: </span><span class="player-total-number">0</span>
-					</div>
-					<div class="col-sm-10 player-cards">
-						<div class="card card-1"></div>
-						<div class="card card-2"></div>
-						<div class="card card-3"></div>
-						<div class="card card-4"></div>
-						<div class="card card-5"></div>
-						<div class="card card-6"></div>
-					</div>
-				</div>
-			</div>
-
-			<div class="row gameplay-buttons">
-				<div class="col-sm-2 col-sm-offset-2">
-					<button class="btn btn-primary deal-button">Deal</button>
-				</div>
-
-				<div class="col-sm-2 col-sm-offset-1">
-					<button class="btn btn-success hit-button">Hit</button>
-				</div>
-
-				<div class="col-sm-2 col-sm-offset-1">
-					<button class="btn btn-warning stand-button">Stand</button>
-				</div>
-
-				<div class="col-sm-offset-2">
-					<button class="btn btn-info reset-button hidden">Play Again?</button>
-				</div>
-
-			</div>
-
-			<!-- <div class="row" id="reset">
-				<div class="col-sm-offset-2">
-					<button class="btn btn-info reset-button hidden">Play Again?</button>
-				</div>
-			</div> -->
-
 		</div>
-	</div>
-</div>
 
 
-</body>
+	</body>
 </html>
 
 <!-- Layout: (done)

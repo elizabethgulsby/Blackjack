@@ -60,7 +60,7 @@ img {
 }
 
 body {
-	background-image: url('../CSS/Damask_Background.jpg');
+	background-image: url('../Images/Damask_Background.jpg');
 }
 
 .dealer-total, .player-total {
@@ -107,4 +107,51 @@ body {
     top: -11.8px;
     left: 922px;
     position: absolute;
+}
+
+/*.deck-size {
+	top: 50px;
+	position: relative;
+}*/
+
+
+.dealerStatus, .playerStatus {
+	position: relative;
+	top: 62px;
+	left: 100px;
+	font-size: x-large;
+	z-index: 3;
+}
+
+.dealer-total-label, .dealer-Total-Number, .dealer-cash, .player-total-label, .player-Total-Number, .player-cash, .fliptable, .deck-size, .flip-span, .deck-image {
+	display: block;
+}
+
+.deck-image {
+	height: 140px;
+}
+
+.flip-table-animation {
+	transform: rotateX(-180deg);
+}
+
+.flip-table-animation-item {
+	transform: rotateX(-1260deg);
+}
+
+.flip-table {
+	transition: all 2s;
+}
+
+.the-table {
+	transition: all 1s;
+}
+
+.flip-span {
+	position: relative;
+	top: 50px;
+}
+
+.flip-table {
+	width: 120px;
 }
